@@ -1,1 +1,32 @@
-Bài tập Playwright và Git
+1. Tại FileExplore tạo folder: pw-fnb-10
+Chuột phải chọn Open Git Bash Here và run lệnh npm init playwright@latest -> code .
+Update câu lệnh trong Tests:
+import { test, expect } from '@playwright/test';
+
+test('has title', async ({ page }) => {
+  await page.goto('https://fnb.kiotviet.vn/');
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Đăng nhập/);
+});
+
+test('get started link', async ({ page }) => {
+  await page.goto('https://fnb.kiotviet.vn/');
+
+  // Click the get started link.
+  await page.getByRole('link', { name: 'Quên mật khẩu' }).click();
+
+  // Expects page to have a heading with the name of Installation.
+  await expect(page.getByRole('heading', { name: 'Quên mật khẩu' })).toBeVisible();
+});
+Nhấn icon run và xem kết quả
+2. Login và Git hub -> Tạo repo git-fnb
+Tại FileExplore tạo folder: hoenhehe và text document answer.txt note các nội dung bài tập
+Chuột phải vào folder chọn Open Git Bash Here và run lệnh:
+git config --global user.name "huyenhehe"
+git config --global user.email "phamthihuyen061998@gmail.com"
+git remote add origin https://github.com/huyenhoen/git-fnb.git
+git init
+git add HuyenTigerAnswer.txt
+git commit -m "Bài 1"
+git push -u origin main
